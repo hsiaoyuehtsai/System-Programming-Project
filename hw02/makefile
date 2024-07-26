@@ -5,6 +5,8 @@ SRC = $(wildcard *.c)
 EXE = $(patsubst %.c, %, $(SRC))
 
 all: ${EXE}
+	echo 3500 > lockf.db
+	echo 3500 > flock.db
 %:	%.c
 	${CC} ${CFLAGS} $@.c -o $@
 
@@ -12,3 +14,5 @@ all: ${EXE}
 	
 clean:
 	rm ${EXE}
+	rm -f flock.db
+	rm -f lockf.db
